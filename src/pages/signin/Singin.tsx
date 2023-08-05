@@ -4,11 +4,12 @@ import axios, { config } from "../../service/api";
 import { schema } from "./Signin.validation";
 import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../common/hooks/useAuth";
 import * as S from "../../common/styles/Sing.styles";
 
 export default function SignIn() {
+  useAuth();
   const navigate = useNavigate();
-
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
