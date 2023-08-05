@@ -5,8 +5,10 @@ import axios, { config } from "../../service/api";
 import { schema } from "./Signup.validation";
 import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "common/hooks/useAuth";
 
 export default function SignUp() {
+  useAuth();
   const navigate = useNavigate();
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),

@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Main.styles";
+import { useAuth } from "common/hooks/useAuth";
 
 export default function Main() {
+  useAuth();
   const navigate = useNavigate();
-
   const onClickMove = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
