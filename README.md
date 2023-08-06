@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+## Info
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 지원자 성명<br/>
+  김태완
 
-## Available Scripts
+- 프로젝트 실행방법<br/>
+  npm install / npm start
 
-In the project directory, you can run:
+- 배포된 To-Do List<br/>
+  [여기를 클랙해 주시면 해당 페이지로 접속됩니다.](http://to-do-list.shop)
 
-### `npm start`
+## Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 원티드 프리온보딩 개인과제로 자신의 일정을 관리 할 수 있는 리스트를 만들 수 있습니다.<br/>
+> 기본적인 로그인 / 회원가입과 리스트를 만들 수 있는 CRUD 등 기본적인 내용으로 구성 후<br/>
+> access_token으로 로그인 여부를 확인하여, To-Do 페이지 진입을 허가 여부를 판단하였습니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Task Analysis
 
-### `npm test`
+개발 완료 후, 사용 가능한 라이브러리 목록이라는 부분을 재 검토 후 중간에 수정하였습니다.<br/>
+()<br/>
+li태그를 사용하라는 부분도, 따로 li 태그 스타일링 한 것을 없앤 후 li 태그를 그대로 사용하였습니다.<br/>
+자세한 내용은 [Issues(클릭)](https://github.com/richcollector/wanted-pre-onboarding-frontend/issues) 참조.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Git Flow
 
-### `npm run build`
+```
+main : 최종적으로 문제가 없는 기능을 포함
+feature : issue에 부여한 기능을 개발하고, 완료 후 main 브랜치로 Merge
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Convention
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Commit
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+  Feat: 기능추가
+  Docs: 문서추가 및 수정
+  Add: 내용추가
+  Style: 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
+  Refactor: 리팩토링
+  Related to: 해당 커밋에 관련된 이슈번호 (아직 해결되지 않은 경우)
+  Resolves: 이슈를 해결했을 때 사용
+```
 
-### `npm run eject`
+- Code
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+  camelCase
+  snake_case(access_token)
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Annotate
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+/*
+    회원가입 스타일 세팅
+*/
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+// To-Do를 추가하는
+```
 
-## Learn More
+- 상단에 해당 파일의 주제 작성.
+- Api 등 주요설명은 한 줄로 간단하게 작성.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+회원가입: /auth/signup
+로그인: /auth/signin
+To-Do 추가: /todos (POST)
+To-Do 리스트 : /todos (GET)
+To-Do 수정: /todos/:id (PUT)
+To-Do 삭제: /todos/:id (DELETE)
+```
+
+자세한 내용은 [Issues(클릭)](https://github.com/richcollector/wanted-pre-onboarding-frontend/issues) 참조.
