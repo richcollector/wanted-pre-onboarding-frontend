@@ -49,7 +49,7 @@ export const ImgBox = styled.img`
   height: 250px;
 `;
 
-export const Form = styled.form`
+export const FormBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

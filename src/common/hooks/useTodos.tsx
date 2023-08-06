@@ -1,7 +1,7 @@
 import axios from "../../service/api";
 import { Modal } from "antd";
 import { IData, IProps } from "pages/todo/Todo.types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const useTodos = (props: IProps) => {
   const navigate = useNavigate();
