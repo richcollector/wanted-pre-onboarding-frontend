@@ -4,6 +4,7 @@ import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "common/hooks/useAuth";
 import { useState } from "react";
+import { useSigns } from "common/hooks/useSigns";
 
 export default function SignUp() {
   useAuth();
@@ -24,59 +25,12 @@ export default function SignUp() {
     password: "",
   });
 
-  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { type, value } = event.target;
-    setInput((prev) => ({ ...prev, [type]: value }));
-    isCheck(type, value);
-  };
-
-  const isCheck = (type: string, value: string) => {
-    if (type === "email") {
-      const emailRegex = /^.+@+.+$/;
-      setIsValid((prev) => ({ ...prev, email: emailRegex.test(value) }));
-      if (!emailRegex.test(value)) {
-        setErrorMessage((prev) => ({
-          ...prev,
-          email: "이메일 형식을 지켜주세요.",
-        }));
-      } else {
-        setErrorMessage((prev) => ({
-          ...prev,
-          email: "",
-        }));
-      }
-    } else if (type === "password") {
-      setIsValid((prev) => ({ ...prev, password: value.length >= 8 }));
-      if (value.length < 8) {
-        setErrorMessage((prev) => ({
-          ...prev,
-          password: "비밀번호를 8글자 이상입력해주세요.",
-        }));
-      } else {
-        setErrorMessage((prev) => ({
-          ...prev,
-          password: "",
-        }));
-      }
-    }
-  };
-
-  const onClickSubmit = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    return axios
-      .post(`/auth/signup`, input, config)
-      .then((res) => {
-        navigate("/signin");
-        console.log("res::", res);
-      })
-      .catch((err) => {
-        Modal.error({
-          title: "This is an error message",
-          content: "존재하는 아이디 입니다.",
-        });
-      });
-  };
+  const { onChangeInput, onClickSubmitSignUp } = useSigns({
+    input,
+    setInput,
+    setIsValid,
+    setErrorMessage,
+  });
 
   return (
     <>
@@ -115,7 +69,7 @@ export default function SignUp() {
                   isValid.email && isValid.password ? "yellow" : "",
               }}
               disabled={!isValid.email || !isValid.password}
-              onClick={onClickSubmit}
+              onClick={onClickSubmitSignUp}
             >
               회원가입하기
             </S.LogBtn>
