@@ -1,10 +1,17 @@
+/*
+  Main 페이지
+*/
+
 import { useNavigate } from "react-router-dom";
 import * as S from "./Main.styles";
 import { useAuth } from "common/hooks/useAuth";
 
 export default function Main() {
+  // access_token 값 검사 후 이동체크
   useAuth();
   const navigate = useNavigate();
+
+  // 로그인, 회원가입 이동
   const onClickMove = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {

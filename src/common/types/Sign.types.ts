@@ -1,3 +1,7 @@
+/*
+  로그인 / 로그아웃시 공통된 type 모음
+*/
+
 export interface IProps {
   input: {
     email: string;

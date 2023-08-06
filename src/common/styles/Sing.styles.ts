@@ -1,3 +1,7 @@
+/*
+  로그인 / 로그아웃 공통된 style 세팅
+*/
+
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 

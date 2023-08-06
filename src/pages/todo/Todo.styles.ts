@@ -1,3 +1,7 @@
+/*
+  To-Do List 스타일 세팅
+*/
+
 import styled from "@emotion/styled";
 
 export const TodoBox = styled.div`
@@ -96,15 +100,6 @@ export const ListItem = styled.div`
   height: 50px;
 
   border-bottom: 1px solid #bdbdbd;
-`;
-
-export const ItemLi = styled.li`
-  width: 100%;
-  text-align: center;
-`;
-
-export const ItemLabel = styled.label`
-  width: 100%;
 `;
 
 export const ItemSpan = styled.span`

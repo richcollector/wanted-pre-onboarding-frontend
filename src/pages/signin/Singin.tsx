@@ -1,28 +1,35 @@
-import axios, { config } from "../../service/api";
-import { useNavigate } from "react-router-dom";
+/*
+  로그인 페이지
+*/
+
 import { useAuth } from "../../common/hooks/useAuth";
 import * as S from "../../common/styles/Sing.styles";
 import { useState } from "react";
 import { useSigns } from "common/hooks/useSigns";
 
 export default function SignIn() {
+  // access_token 값 검사 후 이동체크
   useAuth();
 
+  // 유효성 검사 후 로그인 button 활성화 체크
   const [isValid, setIsValid] = useState({
     email: false,
     password: false,
   });
 
+  // 입력 값 저장
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
 
+  // 에러 값 저장
   const [errorMessage, setErrorMessage] = useState({
     email: "",
     password: "",
   });
 
+  //hook 모음집
   const { onChangeInput, onClickSubmitLogin } = useSigns({
     input,
     setInput,

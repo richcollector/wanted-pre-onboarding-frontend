@@ -1,3 +1,7 @@
+/*
+  공통 Layout 세팅 
+*/
+
 import styled from "@emotion/styled";
 
 export const Container = styled.div`

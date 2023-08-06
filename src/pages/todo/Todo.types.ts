@@ -1,3 +1,7 @@
+/*
+  To-Do List 타입
+*/
+
 export interface IData {
   id: number;
   todo: string;

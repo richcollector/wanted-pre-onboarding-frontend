@@ -1,3 +1,7 @@
+/*
+  회원가입 / 로그인 시 필요한 hook 모음
+*/
+
 import axios, { config } from "../../service/api";
 import { Modal } from "antd";
 import { IProps } from "common/types/Sign.types";
@@ -6,12 +10,14 @@ import { useNavigate } from "react-router-dom";
 export const useSigns = (props: IProps) => {
   const navigate = useNavigate();
 
+  // 이메일, 비밀번호 입력 시 값 저장
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { type, value } = event.target;
     props.setInput((prev) => ({ ...prev, [type]: value }));
     isCheck(type, value);
   };
 
+  // 이메일(@), 비밀번호(8자리이상) 유효성에 맞는지 검사
   const isCheck = (type: string, value: string) => {
     if (type === "email") {
       const emailRegex = /^.+@+.+$/;
@@ -43,6 +49,7 @@ export const useSigns = (props: IProps) => {
     }
   };
 
+  // 로그인 API호출
   const onClickSubmitLogin = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -62,6 +69,7 @@ export const useSigns = (props: IProps) => {
       });
   };
 
+  // 회원가입 API 호출
   const onClickSubmitSignUp = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -69,7 +77,6 @@ export const useSigns = (props: IProps) => {
       .post(`/auth/signup`, props.input, config)
       .then((res) => {
         navigate("/signin");
-        console.log("res::", res);
       })
       .catch((err) => {
         Modal.error({

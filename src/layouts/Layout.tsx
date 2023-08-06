@@ -1,3 +1,7 @@
+/*
+  Layout 페이지 
+*/
+
 import * as S from "./Layout.styles";
 import { Outlet } from "react-router-dom";
 

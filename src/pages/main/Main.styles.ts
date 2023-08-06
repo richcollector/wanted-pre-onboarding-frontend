@@ -1,3 +1,7 @@
+/*
+  Main 페이지 스타일 세팅 
+*/
+
 import styled from "@emotion/styled";
 
 export const MainBox = styled.div`

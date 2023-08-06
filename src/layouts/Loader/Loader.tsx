@@ -1,3 +1,7 @@
+/*
+  Loading 표시 세팅
+*/
+
 import styled from "@emotion/styled";
 
 const Container = styled.div`
