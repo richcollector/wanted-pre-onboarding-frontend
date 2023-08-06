@@ -1,7 +1,6 @@
 import axios from "../../service/api";
 import { Modal } from "antd";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useAuthTodo } from "../../common/hooks/useAuth";
 import * as S from "./Todo.styles";
 import { IData } from "./Todo.types";
@@ -71,7 +70,7 @@ export default function Todo() {
         </S.InputBox>
         <S.ListBox>
           {data.map((el: IData) => (
-            <S.ListItem key={uuidv4()}>
+            <S.ListItem key={el.id}>
               <S.ItemLi>
                 <S.ItemLabel>
                   <S.ItemCheckBox

@@ -1,35 +1,34 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import axios, { config } from "../../service/api";
-import { schema } from "./Signin.validation";
-import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../common/hooks/useAuth";
 import * as S from "../../common/styles/Sing.styles";
+import { useState } from "react";
+import { useSigns } from "common/hooks/useSigns";
 
 export default function SignIn() {
   useAuth();
-  const navigate = useNavigate();
-  const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
+
+  const [isValid, setIsValid] = useState({
+    email: false,
+    password: false,
   });
 
-  const onClickSubmit = (data: any) => {
-    return axios
-      .post(`/auth/signin`, data, config)
-      .then((res) => {
-        const access_token = res.data?.access_token;
-        localStorage.setItem("access_token", access_token);
-        navigate("/todo");
-      })
-      .catch((err) => {
-        Modal.error({
-          title: "This is an error message",
-          content: "로그인 정보가 틀렸습니다.",
-        });
-      });
-  };
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { onChangeInput, onClickSubmitLogin } = useSigns({
+    input,
+    setInput,
+    setIsValid,
+    setErrorMessage,
+  });
 
   return (
     <>
@@ -41,34 +40,39 @@ export default function SignIn() {
           <S.ImgBox src="/logo.png" />
           <S.ToDoTile>SignIn Page</S.ToDoTile>
         </S.LogoBox>
-        <S.Form onSubmit={handleSubmit(onClickSubmit)}>
+        <S.FormBox>
           <S.InputBox>
             <S.Input
               data-testid="email-input"
-              type="text"
+              type="email"
               placeholder="이메일을 입력해주세요."
-              {...register("email")}
+              onChange={onChangeInput}
+              value={input.email}
             />
-            <S.ErrorBox>{formState.errors.email?.message}</S.ErrorBox>
+            <S.ErrorBox>{errorMessage.email}</S.ErrorBox>
             <S.Input
               data-testid="password-input"
               type="password"
               placeholder="비밀번호를 입력해주세요."
-              {...register("password")}
+              onChange={onChangeInput}
+              value={input.password}
             />
-            <S.ErrorBox>{formState.errors.password?.message}</S.ErrorBox>
+            <S.ErrorBox>{errorMessage.password}</S.ErrorBox>
           </S.InputBox>
           <S.LogBox>
             <S.LogBtn
               data-testid="signin-button"
-              style={{ backgroundColor: formState.isValid ? "yellow" : "" }}
-              disabled={!formState.isValid}
-              type="submit"
+              style={{
+                backgroundColor:
+                  isValid.email && isValid.password ? "yellow" : "",
+              }}
+              disabled={!isValid.email || !isValid.password}
+              onClick={onClickSubmitLogin}
             >
               로그인하기
             </S.LogBtn>
           </S.LogBox>
-        </S.Form>
+        </S.FormBox>
       </S.SignWrapper>
     </>
   );
