@@ -18,7 +18,6 @@
 ## Task Analysis
 
 개발 완료 후, 사용 가능한 라이브러리 목록이라는 부분을 재 검토 후 중간에 수정하였습니다.<br/>
-()<br/>
 li태그를 사용하라는 부분도, 따로 li 태그 스타일링 한 것을 없앤 후 li 태그를 그대로 사용하였습니다.<br/>
 자세한 내용은 [Issues(클릭)](https://github.com/richcollector/wanted-pre-onboarding-frontend/issues) 참조.
 
