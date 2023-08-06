@@ -7,7 +7,7 @@
   npm install / npm start
 
 - 배포된 To-Do List<br/>
-  [여기를 클랙해 주시면 해당 페이지로 접속됩니다.](http://to-do-list.shop)
+  [여기를 클릭해 주시면 해당 페이지로 접속됩니다.](http://to-do-list.shop)
 
 ## Project
 
