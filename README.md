@@ -9,6 +9,9 @@
 - 배포된 To-Do List<br/>
   [여기를 클릭해 주시면 해당 페이지로 접속됩니다.](http://to-do-list.shop)
 
+## 동작 영상
+<img width='450px' src='https://github.com/preOnBorading-Idle/pre-onboarding-12th-1-18/assets/72495998/43499e3b-47e2-4cec-9478-222e6b07ada9' alt='To-Do' />
+
 ## Project
 
 > 원티드 프리온보딩 개인과제로 자신의 일정을 관리 할 수 있는 리스트를 만들 수 있습니다.<br/>
